@@ -1,6 +1,6 @@
 # grunt-lineending
 
-> Convert line ending like dos2unix( or unix2dos) command on Grunt.
+> Convert line ending like `dos2unix` ( or `unix2dos`) command on Grunt.
 
 
 ## Getting Started
