@@ -2,22 +2,22 @@
   "name": "grunt-lineending",
   "description": "Convert line ending",
   "version": "0.1.0",
-  "homepage": "https://github.com/suisho/grunt-dos2unix",
+  "homepage": "https://github.com/suisho/grunt-lineending",
   "author": {
     "name": "suisho",
     "email": "suisho000000@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/suisho/grunt-dos2unix.git"
+    "url": "git://github.com/suisho/grunt-lineending.git"
   },
   "bugs": {
-    "url": "https://github.com/suisho/grunt-dos2unix/issues"
+    "url": "https://github.com/suisho/grunt-lineending/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/suisho/grunt-dos2unix/blob/master/LICENSE-MIT"
+      "url": "https://github.com/suisho/grunt-lineending/blob/master/LICENSE-MIT"
     }
   ],
   "main": "Gruntfile.js",
