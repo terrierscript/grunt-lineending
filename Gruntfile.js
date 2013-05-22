@@ -1,19 +1,17 @@
 /*
- * grunt-dos2unix
- * https://github.com/suisho/grunt-dos2unix
+ * grunt-lineending
+ * https://github.com/suisho/grunt-lineending
  *
  * Copyright (c) 2013 suisho
  * Licensed under the MIT license.
  */
 
-'use strict';
-
-module.exports = function(grunt) {
-
+module.exports = function (grunt) {
+  'use strict';
   // Project configuration.
   grunt.initConfig({
     // Before generating any new files, remove any previously-created files.
-    //   
+    //
     jshint: {
       all: [
         'Gruntfile.js',
@@ -35,35 +33,46 @@ module.exports = function(grunt) {
         },
       },
       to_lf: {
-        options : {
-          eol : 'lf'
+        options: {
+          eol: 'lf'
         },
         files: {
-          "./tmp/to_lf/cr" : ["./test/fixtures/cr"],
-          "./tmp/to_lf/crlf" : ["./test/fixtures/crlf"],
-          "./tmp/to_lf/lf" : ["./test/fixtures/lf"]
+          './tmp/to_lf/cr': ['./test/fixtures/cr'],
+          './tmp/to_lf/crlf': ['./test/fixtures/crlf'],
+          './tmp/to_lf/lf': ['./test/fixtures/lf']
         }
       },
       to_crlf: {
-        options : {
-          eol : 'crlf'
+        options: {
+          eol: 'crlf'
         },
         files: {
-          "./tmp/to_crlf/cr" : ["./test/fixtures/cr"],
-          "./tmp/to_crlf/crlf" : ["./test/fixtures/crlf"],
-          "./tmp/to_crlf/lf" : ["./test/fixtures/lf"]
+          './tmp/to_crlf/cr': ['./test/fixtures/cr'],
+          './tmp/to_crlf/crlf': ['./test/fixtures/crlf'],
+          './tmp/to_crlf/lf': ['./test/fixtures/lf']
         }
       },
       to_cr: {
-        options : {
-          eol : 'cr'
+        options: {
+          eol: 'cr'
         },
         files: {
-          "./tmp/to_cr/cr" : ["./test/fixtures/cr"],
-          "./tmp/to_cr/crlf" : ["./test/fixtures/crlf"],
-          "./tmp/to_cr/lf" : ["./test/fixtures/lf"]
+          './tmp/to_cr/cr': ['./test/fixtures/cr'],
+          './tmp/to_cr/crlf': ['./test/fixtures/crlf'],
+          './tmp/to_cr/lf': ['./test/fixtures/lf']
         }
       },
+      to_crlf_all: {
+        options: {
+          eol: 'crlf'
+        },
+        files: [{
+          expand: true,
+          cwd: 'test/fixtures/',
+          src: ['*'],
+          dest: 'tmp/to_crlf_all/'
+        }]
+      }
     },
 
     // Unit tests.
@@ -71,7 +80,7 @@ module.exports = function(grunt) {
       tests: ['test/*_test.js'],
     }
   });
-  //grunt.util.linefeed = "\n";
+  //grunt.util.linefeed = '\n';
   // Actually load this plugin's task(s).
   grunt.loadTasks('./tasks');
 
@@ -80,7 +89,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
-  // Whenever the "test" task is run, first clean the "tmp" dir, then run this
+  // Whenever the 'test' task is run, first clean the 'tmp' dir, then run this
   // plugin's task(s), then test the result.
   grunt.registerTask('test', ['clean', 'lineending', 'nodeunit']);
 
