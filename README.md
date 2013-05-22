@@ -113,5 +113,5 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
- * 2013-05-22   v0.1.1   Removed console.log statement in lineEnding function to clean up output. Changed double quotes to single quotes for consistency. Added Travis-CI. Updated README.md.
+ * 2013-05-22   v0.1.1   Removed console.log statement in lineEnding function to clean up output. Changed double quotes to single quotes for consistency. Added Travis-CI. Updated README.md. Added new test. Added `.jshint`. Added `.gitignore`.
  * 2013-03-16   v0.1.0   Initial release.
