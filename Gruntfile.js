@@ -1,5 +1,5 @@
 /*
- * grunt-dos2unix
+ * grunt-lineending
  * https://github.com/suisho/grunt-lineending
  *
  * Copyright (c) 2013 suisho
