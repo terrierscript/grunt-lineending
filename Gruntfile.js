@@ -70,8 +70,8 @@ module.exports = function(grunt) {
         },
         files: [{
           expand: true,
-          cwd: './',
-          src: ['test/fixtures/*'],
+          cwd: 'test/fixtures/',
+          src: ['*'],
           dest: 'tmp/to_crlf_all/'
         }]
       }
