@@ -1,3 +1,4 @@
+/*jshint globalstrict: true*/
 'use strict';
 
 var grunt = require('grunt');
@@ -22,45 +23,52 @@ var grunt = require('grunt');
     test.ifError(value)
 */
 
-exports.dos2unix = {
-  setUp: function(done) {
+exports.test = {
+  setUp: function (done) {
     // setup here if necessary
     done();
   },
-  default_options: function(test) {
+  default_options: function (test) {
     test.expect(1);
-
     var actual = grunt.file.read('tmp/default_options');
     var expected = grunt.file.read('test/expected/lf');
     test.equal(actual, expected, 'default is lf');
-
     test.done();
   },
-  to_cr: function(test) {
+  to_cr: function (test) {
     test.expect(3);
     var expected = grunt.file.read('test/expected/cr');
-    var dir = "tmp/to_cr";
-    test.equal(grunt.file.read(dir+'/cr'), expected, 'cr -> cr');
-    test.equal(grunt.file.read(dir+'/lf'), expected, 'lf -> cr');
-    test.equal(grunt.file.read(dir+'/crlf'), expected, 'crlf -> cr');
+    var dir = 'tmp/to_cr';
+    test.equal(grunt.file.read(dir + '/cr'), expected, 'cr -> cr');
+    test.equal(grunt.file.read(dir + '/lf'), expected, 'lf -> cr');
+    test.equal(grunt.file.read(dir + '/crlf'), expected, 'crlf -> cr');
     test.done();
   },
-  to_lf: function(test) {
+  to_lf: function (test) {
     test.expect(3);
     var expected = grunt.file.read('test/expected/lf');
-    var dir = "tmp/to_lf";
-    test.equal(grunt.file.read(dir+'/cr'), expected, 'cr -> lf');
-    test.equal(grunt.file.read(dir+'/lf'), expected, 'lf -> lf');
-    test.equal(grunt.file.read(dir+'/crlf'), expected, 'crlf -> lf');
+    var dir = 'tmp/to_lf';
+    test.equal(grunt.file.read(dir + '/cr'), expected, 'cr -> lf');
+    test.equal(grunt.file.read(dir + '/lf'), expected, 'lf -> lf');
+    test.equal(grunt.file.read(dir + '/crlf'), expected, 'crlf -> lf');
     test.done();
   },
-  to_crlf: function(test) {
+  to_crlf: function (test) {
     test.expect(3);
     var expected = grunt.file.read('test/expected/crlf');
-    var dir = "tmp/to_crlf";
-    test.equal(grunt.file.read(dir+'/cr'), expected, 'cr -> crlf');
-    test.equal(grunt.file.read(dir+'/lf'), expected, 'lf -> crlf');
-    test.equal(grunt.file.read(dir+'/crlf'), expected, 'crlf -> crlf');
+    var dir = 'tmp/to_crlf';
+    test.equal(grunt.file.read(dir + '/cr'), expected, 'cr -> crlf');
+    test.equal(grunt.file.read(dir + '/lf'), expected, 'lf -> crlf');
+    test.equal(grunt.file.read(dir + '/crlf'), expected, 'crlf -> crlf');
+    test.done();
+  },
+  to_crlf_all: function (test) {
+    test.expect(3);
+    var expected = grunt.file.read('test/expected/crlf');
+    var dir = 'tmp/to_crlf_all';
+    test.equal(grunt.file.read(dir + '/cr'), expected, 'cr -> crlf');
+    test.equal(grunt.file.read(dir + '/lf'), expected, 'lf -> crlf');
+    test.equal(grunt.file.read(dir + '/crlf'), expected, 'crlf -> crlf');
     test.done();
   },
 };
