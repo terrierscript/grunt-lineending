@@ -32,9 +32,9 @@ In your project's Gruntfile, add a section named `lineending` to the data object
 ### Options
 
 #### eol
-Type: `String`  
-Choices: `'lf'`, `'cr'`, `'crlf'`  
-Default: `'lf'`  
+Type: `String`
+Choices: `'lf'`, `'cr'`, `'crlf'`
+Default: `'lf'`
 
 ### Usage Examples
 
@@ -100,9 +100,9 @@ grunt.initConfig({
       },
       files: [{
         expand: true,
-        cwd: './',
-        src: ['test/fixtures/*'],
-        dest: 'tmp/to_crlf/'
+        cwd: 'test/fixtures/',
+        src: ['*'],
+        dest: 'tmp/to_crlf_all/'
       }]
     }
   }
