@@ -1,4 +1,4 @@
-# grunt-lineending
+# grunt-lineending [![Build Status](https://travis-ci.org/suisho/grunt-lineending.png?branch=master)](https://travis-ci.org/suisho/grunt-lineending)
 
 > Convert line ending like `dos2unix` ( or `unix2dos`) command on Grunt.
 
@@ -69,4 +69,4 @@ If you want convert all files.
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+ * 2013-03-16   v0.1.0   Initial release.
