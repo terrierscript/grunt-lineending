@@ -21,8 +21,7 @@ module.exports = function(grunt) {
         linefeed= '\n';
         break;
     }
-     
-    console.log(linefeed );
+    
     file = file.replace(/\r\n|\n|\r/g, linefeed);
     return file;
   };
