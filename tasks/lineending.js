@@ -11,13 +11,13 @@ module.exports = function(grunt) {
     var file = grunt.file.read(filepath);
     var linefeed  = '\n';
     switch(options.eol){
-      case "cr":
+      case 'cr':
         linefeed = '\r';
         break;
-      case "crlf":
+      case 'crlf':
         linefeed = '\r\n';
         break;
-      case "lf":
+      case 'lf':
         linefeed= '\n';
         break;
     }
