@@ -1,5 +1,5 @@
 /*
- * grunt-dos2unix
+ * grunt-lineending
  * http://gruntjs.com/
  *
  * Licensed under the MIT license.

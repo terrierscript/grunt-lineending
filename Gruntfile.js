@@ -1,6 +1,6 @@
 /*
- * grunt-dos2unix
- * https://github.com/suisho/grunt-dos2unix
+ * grunt-lineending
+ * https://github.com/suisho/grunt-lineending
  *
  * Copyright (c) 2013 suisho
  * Licensed under the MIT license.
