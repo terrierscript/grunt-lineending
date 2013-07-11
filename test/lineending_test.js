@@ -63,4 +63,18 @@ exports.test = {
     test.equal(grunt.file.read(dir+'/crlf'), expected, 'crlf -> crlf');
     test.done();
   },
+  multi: function(test) {
+    test.expect(2);
+    var expected = grunt.file.read('test/expected/multi/foo');
+    var dir = "tmp/multi/test/fixtures";
+    test.equal(grunt.file.read(dir+'/multi/foo'), expected, 'multi : foo');
+    test.equal(grunt.file.read(dir+'/multi/baz'), expected, 'multi : baz');
+    test.done();
+  },
+  multi_cat : function(test){
+    test.expect(1);
+    var expected = grunt.file.read('test/expected/multi_cat');
+    test.equal(grunt.file.read('tmp/multi_cat'), expected, 'multi cat');
+    test.done();
+  }
 };

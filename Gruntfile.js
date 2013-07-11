@@ -64,6 +64,19 @@ module.exports = function(grunt) {
           "./tmp/to_cr/lf" : ["./test/fixtures/lf"]
         }
       },
+      multi : {
+        files: [{
+          expand : true,
+          cwd : './',
+          src : ['test/fixtures/multi/*'],
+          dest : 'tmp/multi'
+        }]
+      },
+      multi_cat : {
+        files : {
+          "./tmp/multi_cat" : ["test/fixtures/multi/*"]
+        }
+      }
     },
 
     // Unit tests.

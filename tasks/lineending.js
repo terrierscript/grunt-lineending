@@ -7,20 +7,18 @@
  
 'use strict';
 module.exports = function(grunt) {
-  var lineEnding = function(filepath, options){
-    var file = grunt.file.read(filepath);
-    var linefeed  = '\n';
-    switch(options.eol){
+  var detectLineFeed = function(eol){
+    switch(eol){
       case "cr":
-        linefeed = '\r';
-        break;
+        return '\r';
       case "crlf":
-        linefeed = '\r\n';
-        break;
+        return '\r\n';
       case "lf":
-        linefeed= '\n';
-        break;
+        return '\n';
     }
+  }
+  var lineEnding = function(filepath, linefeed){
+    var file = grunt.file.read(filepath);
     
     file = file.replace(/\r\n|\n|\r/g, linefeed);
     return file;
@@ -39,18 +37,27 @@ module.exports = function(grunt) {
           return true;
         }
       });
-      
-      var output;
-      try {
-        
-        output = lineEnding(src, options);
-      } catch (e) {
-        var err = new Error('Uglification failed.');
-        err.origError = e;
-        grunt.fail.warn(err);
+    
+      // detect linefeed
+      var linefeed  = '\n';
+      if(options.eol){
+        linefeed = detectLineFeed(options.eol)
       }
+
+      // create output
+      var output = [];
+      src.forEach(function(_src){
+        try {
+          output.push(lineEnding(_src, linefeed));
+        } catch (e) {
+          var err = new Error('Uglification failed.');
+          err.origError = e;
+          grunt.fail.warn(err);
+        }
+      })
+
       // Write the destination file.
-      grunt.file.write(f.dest, output);
+      grunt.file.write(f.dest, output.join(linefeed));
  
       // Print a success message.
       grunt.log.writeln('File "' + f.dest + '" created.');
