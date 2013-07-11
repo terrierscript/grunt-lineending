@@ -1,7 +1,7 @@
 {
   "name": "grunt-lineending",
   "description": "Convert line ending",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "homepage": "https://github.com/suisho/grunt-lineending",
   "author": {
     "name": "suisho",
