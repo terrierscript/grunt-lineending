@@ -28,21 +28,31 @@ module.exports = function(grunt) {
     });
     grunt.verbose.writeflags(options, 'Options');
     this.files.forEach(function(f) {
-      var src = f.src.filter(function(filepath) {
-        // Warn on and remove invalid source files (if nonull was set).
-        if (!grunt.file.exists(filepath)) {
-          grunt.log.warn('Source file "' + filepath + '" not found.');
-          return false;
-        } else {
-          return true;
-        }
-      });
     
       // detect linefeed
       var linefeed  = '\n';
       if(options.eol){
         linefeed = detectLineFeed(options.eol)
       }
+
+      var hasChanged = true;
+
+      var src = f.src.filter(function(filepath) {
+        // Warn on and remove invalid source files (if nonull was set).
+        if (!grunt.file.exists(filepath)) {
+          grunt.log.warn('Source file "' + filepath + '" not found.');
+          return false;
+        }
+
+        // ignore files that already have normalized line endings
+        var original = grunt.file.read(filepath);
+        var expected = lineEnding(filepath, linefeed);
+        if (original == expected) {
+          hasChanged = false;
+        }
+  
+        return true;
+      });
 
       // create output
       var output = [];
@@ -56,11 +66,14 @@ module.exports = function(grunt) {
         }
       })
 
-      // Write the destination file.
-      grunt.file.write(f.dest, output.join(linefeed));
- 
-      // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" created.');
+      // Skip if src and destination are the same and there is no change
+      if (f.src[0] != f.dest && hasChanged) {
+        // Write the destination file.
+        grunt.file.write(f.dest, output.join(linefeed));
+
+        // Print a success message.
+        grunt.log.writeln('File "' + f.dest + '" created.');
+      }
     });
   });
 };
