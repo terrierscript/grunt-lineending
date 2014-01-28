@@ -109,6 +109,25 @@ grunt.initConfig({
 });
 ```
 
+
+#### Convert files in place (overwrite)
+Set `overwrite` option to true. This ignored the destination (set it to `''`) and overwrites the sources files. Additionally it only overwrites the src files if the line endings have changed.
+
+```js
+grunt.initConfig({
+  lineending: {
+    dist: {
+      options: {
+        overwrite: true
+      },
+      files: {
+        '': ['test/fixtures/*']
+      }
+    }
+  }
+});
+```
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
