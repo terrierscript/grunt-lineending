@@ -28,6 +28,10 @@ module.exports = function(grunt) {
     });
     grunt.verbose.writeflags(options, 'Options');
     this.files.forEach(function(f) {
+
+      // src and dest are the same file (defaults to false)
+      var overwrite = options.overwrite || false;
+
       var src = f.src.filter(function(filepath) {
         // Warn on and remove invalid source files (if nonull was set).
         if (!grunt.file.exists(filepath)) {
@@ -48,7 +52,19 @@ module.exports = function(grunt) {
       var output = [];
       src.forEach(function(_src){
         try {
-          output.push(lineEnding(_src, linefeed));
+          var normalized = lineEnding(_src, linefeed);
+          output.push(normalized);
+          if (overwrite) {
+            // ignore files if input/output is the same
+            var original = grunt.file.read(_src);
+            if (original != normalized) {
+              // Write the destination file.
+              grunt.file.write(_src, normalized);
+         
+              // Print a success message.
+              grunt.log.writeln('File "' + _src + '" updated.');
+            }
+          }
         } catch (e) {
           var err = new Error('Uglification failed.');
           err.origError = e;
@@ -56,11 +72,14 @@ module.exports = function(grunt) {
         }
       })
 
-      // Write the destination file.
-      grunt.file.write(f.dest, output.join(linefeed));
- 
-      // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" created.');
+      if (!overwrite) {
+        // Write the destination file.
+        grunt.file.write(f.dest, output.join(linefeed));
+   
+        // Print a success message.
+        grunt.log.writeln('File "' + f.dest + '" created.');
+      }
+
     });
   });
 };
