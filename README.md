@@ -110,6 +110,8 @@ grunt.initConfig({
 ```
 
 #### Convert files in-place (overwrite)
+(This is experimental option)
+
 Set `overwrite` option to `true` (default is `false`). The destination is ignored and can be set to `''`.
 
 This option only overwrites a source file if the line endings need to be updated otherwise it leaves the file untouched.
