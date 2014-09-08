@@ -16,7 +16,7 @@ module.exports = function(grunt) {
       case "lf":
         return '\n';
     }
-  }
+  };
   var lineEnding = function(filepath, linefeed){
     var file = grunt.file.read(filepath);
     
@@ -37,15 +37,21 @@ module.exports = function(grunt) {
         if (!grunt.file.exists(filepath)) {
           grunt.log.warn('Source file "' + filepath + '" not found.');
           return false;
+        } else if (!grunt.file.isFile(filepath)) {
+          grunt.verbose.writeln('Skipping "' + filepath + '" not a file.');
+          return false;
         } else {
           return true;
         }
       });
+      if (src.length === 0) {
+        return;
+      }
     
       // detect linefeed
       var linefeed  = '\n';
       if(options.eol){
-        linefeed = detectLineFeed(options.eol)
+        linefeed = detectLineFeed(options.eol);
       }
 
       // create output
@@ -66,11 +72,11 @@ module.exports = function(grunt) {
             }
           }
         } catch (e) {
-          var err = new Error('Uglification failed.');
+          var err = new Error('Linefeed convert failed.');
           err.origError = e;
           grunt.fail.warn(err);
         }
-      })
+      });
 
       if (!overwrite) {
         // Write the destination file.

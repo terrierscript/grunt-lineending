@@ -1,0 +1,15 @@
+test/expected/multi/bar eol=lf
+test/expected/multi/foo eol=lf
+test/expected/nested/one eol=lf
+test/expected/nested/level1/nest_one eol=lf
+test/expected/nested/level1/level2/nest_two eol=lf
+test/expected/crlf eol=crlf
+test/expected/lf eol=lf
+test/expected/multi_cat eol=lf
+test/fixtures/multi/bar eol=crlf
+test/fixtures/multi/foo eol=crlf
+test/fixtures/nested/one eol=crlf
+test/fixtures/nested/level1/nest_one eol=crlf
+test/fixtures/nested/level1/level2/nest_two eol=crlf
+test/fixtures/crlf eol=crlf
+test/fixtures/lf eol=lf

@@ -71,10 +71,29 @@ exports.test = {
     test.equal(grunt.file.read(dir+'/multi/baz'), expected, 'multi : baz');
     test.done();
   },
-  multi_cat : function(test){
+  multi_cat: function(test) {
     test.expect(1);
     var expected = grunt.file.read('test/expected/multi_cat');
     test.equal(grunt.file.read('tmp/multi_cat'), expected, 'multi cat');
+    test.done();
+  },
+  nested: function (test) {
+    test.expect(3);
+    test.equal(
+      grunt.file.read('tmp/nested/one'),
+      grunt.file.read('test/expected/nested/one'),
+      'base file'
+    );
+    test.equal(
+      grunt.file.read('tmp/nested/level1/nest_one'),
+      grunt.file.read('test/expected/nested/level1/nest_one'),
+      'nest level one'
+    );
+    test.equal(
+      grunt.file.read('tmp/nested/level1/level2/nest_two'),
+      grunt.file.read('test/expected/nested/level1/level2/nest_two'),
+      'nest level two'
+    );
     test.done();
   }
 };
