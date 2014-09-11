@@ -76,6 +76,14 @@ module.exports = function(grunt) {
         files : {
           "./tmp/multi_cat" : ["test/fixtures/multi/*"]
         }
+      },
+      nested : {
+        files : [{
+          expand : true,
+          cwd : './test/fixtures/nested',
+          src : ['**/*'],
+          dest : 'tmp/nested'
+        }]
       }
     },
 
