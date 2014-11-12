@@ -34,7 +34,7 @@ In your project's Gruntfile, add a section named `lineending` to the data object
 #### eol
 Type: `String`  
 Choices: `'lf'`, `'cr'`, `'crlf'`  
-Default: `'lf'`  
+Default: `grunt.util.linefeed` value  
 
 ### Usage Examples
 
