@@ -26,6 +26,7 @@ exports.test = {
   setUp: function(done) {
     // setup here if necessary
     done();
+    grunt.util.linefeed = '\n';
   },
   default_options: function(test) {
     test.expect(1);

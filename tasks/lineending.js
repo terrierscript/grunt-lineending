@@ -15,6 +15,8 @@ module.exports = function(grunt) {
         return '\r\n';
       case "lf":
         return '\n';
+      default:
+        return grunt.util.linefeed;
     }
   };
   var lineEnding = function(filepath, linefeed){
@@ -49,10 +51,7 @@ module.exports = function(grunt) {
       }
     
       // detect linefeed
-      var linefeed  = '\n';
-      if(options.eol){
-        linefeed = detectLineFeed(options.eol);
-      }
+      var linefeed  = detectLineFeed(options.eol);
 
       // create output
       var output = [];
